@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Main {
+public class SlavaTestIO {
 
     private static void copyFile(String pathIn, String pathOut) throws IOException {
         FileInputStream in = null;
@@ -16,7 +16,6 @@ public class Main {
             byte[] c = new byte[4096];
             while ((in.read(c)) != -1) {
                 out.write(c);
-                c = new byte[4096];
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,6 +30,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Main.copyFile(args[0], args[1]);
+        copyFile(args[0], args[1]);
     }
 }
