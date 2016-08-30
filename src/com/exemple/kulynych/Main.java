@@ -1,18 +1,36 @@
 package com.exemple.kulynych;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Main {
-    private static SlavaInputOutput streamExam;
 
-    private static String PATH_IN = "C:/Execom/ProgrammForMe/test.txt";
-    private static String PATH_OUT = "C:/Execom/ProgrammForMe/data.txt";
+    private static void copyFile(String pathIn, String pathOut) throws IOException {
+        FileInputStream in = null;
+        FileOutputStream out = null;
+        try {
+            in = new FileInputStream(pathIn);
+            out = new FileOutputStream(pathOut);
+
+            byte[] c = new byte[4096];
+            while ((in.read(c)) != -1) {
+                out.write(c);
+                c = new byte[4096];
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        }
+    }
 
     public static void main(String[] args) throws IOException {
-        PATH_IN = args[0];
-        PATH_OUT = args[1];
-        streamExam = new SlavaInputOutput(PATH_IN, PATH_OUT);
-
-        streamExam.copyFile();
+        Main.copyFile(args[0], args[1]);
     }
 }
