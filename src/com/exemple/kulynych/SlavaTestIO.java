@@ -14,8 +14,9 @@ public class SlavaTestIO {
             out = new FileOutputStream(pathOut);
 
             byte[] c = new byte[4096];
-            while ((in.read(c)) != -1) {
-                out.write(c);
+            int readCount;
+            while ((readCount = in.read(c)) != -1) {
+                out.write(c, 0, readCount);
             }
         } catch (IOException e) {
             e.printStackTrace();
