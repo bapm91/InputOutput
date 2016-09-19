@@ -10,19 +10,18 @@ import java.util.regex.Pattern;
 public class SlavaTestRegExp {
 
     private static boolean test(String testString, String mask){
-        String patternMask = "mask";
-        Pattern p = Pattern.compile(patternMask);
+        Pattern p = Pattern.compile(mask);
         Matcher m = p.matcher(testString);
         return m.matches();
     }
 
     private static boolean testMask(String testString){
-        Pattern p = Pattern.compile("(\\w?)*(\\*?)*(\\ ?)*");
+        Pattern p = Pattern.compile("((\\w?)*(\\*?)*(\\ ?)*(\\.?)*)*");
         Matcher m = p.matcher(testString);
         return m.matches();
     }
 
-    private static List<String> matchFiles(String mask, String path) throws IOException {
+    public static List<String> matchFiles(String mask, String path) throws IOException {
         if (!testMask(mask)) {
             throw new IOException("Sorry! I can not read this symbol =( ");
         }
