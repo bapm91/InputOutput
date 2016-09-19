@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class SlavaTestRegExp {
 
     private static boolean test(String testString, String mask){
-        String patternMask = "(.?)*" + mask + "(.?)*";
+        String patternMask = "mask";
         Pattern p = Pattern.compile(patternMask);
         Matcher m = p.matcher(testString);
         return m.matches();
